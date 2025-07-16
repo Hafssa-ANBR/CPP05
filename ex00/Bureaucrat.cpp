@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:12 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/15 16:24:41 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:36:39 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ Bureaucrat::Bureaucrat() : _name("Bureaucrate"),grade(42) {}
 
 Bureaucrat::Bureaucrat(std::string name,int ngrade) : _name(name)
 {
-    std::cout << "heree " << ngrade << std::endl;
     if(ngrade < 1)
         throw Bureaucrat::GradeTooHighException();
     else if(ngrade > 150)

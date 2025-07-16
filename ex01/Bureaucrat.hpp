@@ -6,12 +6,13 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/15 16:15:24 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:40:52 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -27,6 +28,7 @@ class Bureaucrat
         int getGrade();
         void increment();
         void decrement();
+        void signForm(Form existForm);
         ~Bureaucrat();
         class GradeTooHighException : public std::exception
         {
