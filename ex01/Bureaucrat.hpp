@@ -24,8 +24,8 @@ class Bureaucrat
         Bureaucrat(std::string name,int ngrade);
         Bureaucrat(const Bureaucrat &cpy);
         Bureaucrat &operator=(const Bureaucrat &affect);
-        std::string getName();
-        int getGrade();
+        std::string getName() const;
+        int getGrade() const;
         void increment();
         void decrement();
         void signForm(Form existForm);

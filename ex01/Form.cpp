@@ -11,24 +11,23 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form()
 {
     _Fname = "default";
     _Fgrade = 42;
-    _signed = false;
     exec_grade = 37;
 }
 
-Form::Form(std::string name, int grade, bool sign, int exec_gd)
+Form::Form(std::string name, int grade, int exec_gd)
 {
     if(grade < 1)
-        throw Form::GradeTooHightException();
+        throw Form::GradeTooHighException();
     if(grade > 150)
         throw Form::GradeTooLowException();
     _Fname = name;
     _Fgrade = grade;
-    _signed = sign;
     exec_grade = exec_gd;
 }
 
@@ -58,30 +57,47 @@ std::ostream &operator<<(std::ostream &out, const Form &form)
         << "]";
     return out;
 }
-std::string Form::getFname()
+std::string Form::getFname() const
 {
     return(_Fname);
 }
 
-int Form::getFgrade()
+int Form::getFgrade() const
 {
     return(_Fgrade);
 }
 
-bool Form::getsigned()
+bool Form::getsigned() const
 {
     return(_signed);
 }
 
-int Form::getExecGrade()
+int Form::getExecGrade() const
 {
     return(exec_grade);
 }
 
 Form::~Form() {}
 
-void Form::beSigned(Bureaucrat person)
+// void Form::beSigned(Bureaucrat person)
+// {
+//     if(person.getGrade() >= _signed)
+//         _signed = true;
+// }
+
+void Form::beSigned(const Bureaucrat &person)//why
 {
-    if(person.getGrade() >= _signed)
-        _signed = true;
+    if (person.getGrade() > _Fgrade) // Si le grade est trop bas
+        throw GradeTooLowException();
+    _signed = true;
+}
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+    return("Form::GradeTooHighException");
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+    return("Form::GradeTooLowException");
 }

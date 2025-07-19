@@ -14,6 +14,7 @@
 #include <iostream>
 class Bureaucrat;
 
+
 class Form 
 {
     private:
@@ -24,7 +25,7 @@ class Form
         
     public:
         Form();
-        Form(std::string name, int grade, bool sign, int exec_gd);
+        Form(std::string name, int grade, int exec_gd);
         Form(const Form &cpy);
         Form &operator=(const Form &affect);
         std::string getFname() const;
@@ -33,8 +34,8 @@ class Form
         int getExecGrade() const;
         
         ~Form();
-        void beSigned(Bureaucrat person);
-        class GradeTooHightException : public std::exception
+        void beSigned(const Bureaucrat &person);
+        class GradeTooHighException : public std::exception
         {
             public:
                 const char* what() const throw();
