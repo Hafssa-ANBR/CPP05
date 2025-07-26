@@ -2,9 +2,9 @@ NAME = Bureaucrat
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 rm = rm -rf
-HEADERS = Bureaucrat.hpp Form.hpp
+HEADERS = Bureaucrat.hpp AForm.hpp
 
-SRCS = Bureaucrat.cpp  Form.cpp main.cpp
+SRCS = Bureaucrat.cpp  AForm.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

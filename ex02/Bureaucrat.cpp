@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:12 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/16 13:36:30 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/07/26 12:37:10 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void Bureaucrat::decrement()
         throw Bureaucrat::GradeTooLowException();
 }
 
-void Bureaucrat::signForm(Form existForm)
+void Bureaucrat::signForm(AForm existForm)
 {
     if(existForm.getsigned())
         std::cout << _name << " signed " << existForm.getFname() << std::endl;
