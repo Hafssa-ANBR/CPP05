@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:48:38 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/16 14:50:50 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/07/26 12:54:20 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Form
 {
     private:
         std::string _Fname;
-        int _Fgrade;//signe grade
+        int SigneGrade;//signe grade
         bool _signed;
         int exec_grade;
         

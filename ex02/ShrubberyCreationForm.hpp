@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 13:08:11 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/26 13:12:45 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:28:30 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 class ShrubberyCreationForm : public AForm
 {
     private :
-    std::string _target;
+        std::string _target;
+        ShrubberyCreationForm();
     public :
-    ShrubberyCreationForm();
-    ShrubberyCreationForm(std::string _target);
-    ShrubberyCreationForm(const ShrubberyCreationForm &cpy);
-    ShrubberyCreationForm &operator=(const ShrubberyCreationForm &affect);
-    void CreaTree();
-    ~ShrubberyCreationForm();
+        ShrubberyCreationForm(std::string _target);
+        ShrubberyCreationForm(const ShrubberyCreationForm &cpy);
+        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &affect);
+        void execute(Bureaucrat const & executor) const;
+        ~ShrubberyCreationForm();
 };

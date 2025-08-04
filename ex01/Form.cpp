@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:48:34 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/16 13:57:34 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/07/26 12:54:20 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Form::Form()
 {
     _Fname = "default";
-    _Fgrade = 42;
+    SigneGrade = 42;
     exec_grade = 37;
 }
 
@@ -27,7 +27,7 @@ Form::Form(std::string name, int grade, int exec_gd)
     if(grade > 150)
         throw Form::GradeTooLowException();
     _Fname = name;
-    _Fgrade = grade;
+    SigneGrade = grade;
     exec_grade = exec_gd;
 }
 
@@ -41,7 +41,7 @@ Form &Form::operator=(const Form &affect)
     if(this != &affect)
     {
         _Fname = affect._Fname;
-        _Fgrade = affect._Fgrade;
+        SigneGrade = affect.SigneGrade;
         _signed = affect._signed;
         exec_grade = affect.exec_grade;
     }
@@ -64,7 +64,7 @@ std::string Form::getFname() const
 
 int Form::getFgrade() const
 {
-    return(_Fgrade);
+    return(SigneGrade);
 }
 
 bool Form::getsigned() const
@@ -87,7 +87,7 @@ Form::~Form() {}
 
 void Form::beSigned(const Bureaucrat &person)//why
 {
-    if (person.getGrade() > _Fgrade) // Si le grade est trop bas
+    if (person.getGrade() > SigneGrade) // Si le grade est trop bas
         throw GradeTooLowException();
     _signed = true;
 }
