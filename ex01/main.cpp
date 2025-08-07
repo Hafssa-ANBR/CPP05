@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:04 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/15 16:25:32 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/07 13:16:10 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main()
 {
     try {
         Bureaucrat bob("Bob", 50);      // grade 50
-        Form form1("Form A", 75, false, 25); // besoin d’un grade 75 pour signer
+        Form form1("Form A", 75, 25); // besoin d’un grade 75 pour signer
 
         std::cout << bob << std::endl;
         std::cout << form1 << std::endl;
@@ -36,7 +36,7 @@ int main()
 
     try {
         Bureaucrat alice("Alice", 150);    // grade trop bas
-        Form form2("Form B", 50, false, 25); // besoin d’un grade 50
+        Form form2("Form B", 50, 25); // besoin d’un grade 50
 
         std::cout << alice << std::endl;
         std::cout << form2 << std::endl;

@@ -6,11 +6,13 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 13:07:34 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/04 14:26:59 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/07 14:01:46 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
+
 
 PresidentialPardonForm::PresidentialPardonForm()
 {
@@ -39,13 +41,23 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
         SigneGrade = affect.SigneGrade;
         _signed = affect._signed;
         exec_grade = affect.exec_grade;
+        //a verifier
     }
+    if (this != &affect)
+    {
+        AForm::operator=(affect); // 🔁 Appel à l’opérateur d’affectation de la classe de base
+        this->_target = affect._target;
+    }///////////////////////////////////////////////////// avoir apres
     return(*this);
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-    
+    if(executor.getGrade() > this->getExecGrade())
+        throw GradeTooLowException();
+    else if(this->getsigned() == false)
+        throw NotSigneFormException();
+    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()

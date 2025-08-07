@@ -6,11 +6,12 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 13:07:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/04 14:32:33 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/07 11:53:02 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() : _target("default")
 {
@@ -47,6 +48,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
     std::fstream MyFile("shrubberyTree.txt");
 
+    if(executor.getGrade() > this->getExecGrade())
+        throw GradeTooLowException();
+    else if(this->getsigned() == false)
+        throw NotSigneFormException();
+    std::cout << _target << "_shrubbery in the working directory " << std::endl;
     MyFile <<
         "                              'b      *\n"
         "                               '$    #.\n"

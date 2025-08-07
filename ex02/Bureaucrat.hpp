@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/26 12:37:29 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/07 13:45:21 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Bureaucrat
         int getGrade() const;
         void increment();
         void decrement();
-        void signForm(AForm existForm);
+        void signForm(AForm &existForm);
+        void executeForm(AForm &existForm);
         ~Bureaucrat();
         class GradeTooHighException : public std::exception
         {
@@ -41,3 +42,4 @@ class Bureaucrat
                 const char* what() const throw();
         };
 };
+std::ostream &operator<<(std::ostream &out, Bureaucrat &obj);

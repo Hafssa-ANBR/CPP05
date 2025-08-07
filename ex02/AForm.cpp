@@ -48,15 +48,6 @@ AForm &AForm::operator=(const AForm &affect)
     return(*this);
 }
 
-std::ostream &operator<<(std::ostream &out, const AForm &AForm)
-{
-    out << "AForm \"" << AForm.getFname() << "\""
-        << " [signed: " << (AForm.getsigned() ? "yes" : "no")
-        << ", grade required to sign: " << AForm.getFgrade()
-        << ", grade required to execute: " << AForm.getExecGrade()
-        << "]";
-    return out;
-}
 std::string AForm::getFname() const
 {
     return(_Fname);
@@ -100,4 +91,18 @@ const char* AForm::GradeTooHighException::what() const throw()
 const char* AForm::GradeTooLowException::what() const throw()
 {
     return("AForm::GradeTooLowException");
+}
+
+const char* AForm::NotSigneFormException::what() const throw()
+{
+    return("AForm::NotSigneFormException");
+}
+
+std::ostream &operator<<(std::ostream &out, const AForm &form)
+{
+    out << "form name : " << form.getFname() << std::endl;
+    out << "signe grade : " << form.getFgrade() << std::endl;
+    out << "signed : " << form.getsigned() << std::endl;
+    out << "execute grade : " <<  form.getExecGrade()<< std::endl;
+    return(out);
 }

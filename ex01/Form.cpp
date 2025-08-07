@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:48:34 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/26 12:54:20 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:37:26 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,42 +48,27 @@ Form &Form::operator=(const Form &affect)
     return(*this);
 }
 
-std::ostream &operator<<(std::ostream &out, const Form &form)
-{
-    out << "Form \"" << form.getFname() << "\""
-        << " [signed: " << (form.getsigned() ? "yes" : "no")
-        << ", grade required to sign: " << form.getFgrade()
-        << ", grade required to execute: " << form.getExecGrade()
-        << "]";
-    return out;
-}
 std::string Form::getFname() const
 {
-    return(_Fname);
+    return (_Fname);
 }
 
 int Form::getFgrade() const
 {
-    return(SigneGrade);
+    return (SigneGrade);
 }
 
 bool Form::getsigned() const
 {
-    return(_signed);
+    return (_signed);
 }
 
 int Form::getExecGrade() const
 {
-    return(exec_grade);
+    return (exec_grade);
 }
 
 Form::~Form() {}
-
-// void Form::beSigned(Bureaucrat person)
-// {
-//     if(person.getGrade() >= _signed)
-//         _signed = true;
-// }
 
 void Form::beSigned(const Bureaucrat &person)//why
 {
@@ -94,10 +79,19 @@ void Form::beSigned(const Bureaucrat &person)//why
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-    return("Form::GradeTooHighException");
+    return ("Form::GradeTooHighException");
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-    return("Form::GradeTooLowException");
+    return ("Form::GradeTooLowException");
+}
+
+std::ostream &operator<<(std::ostream &out, const Form &form)
+{
+    out << "form name : " << form.getFname() << std::endl;
+    out << "signe grade : " << form.getFgrade() << std::endl;
+    out << "signed : " << form.getsigned() << std::endl;
+    out << "execute grade : " <<  form.getExecGrade()<< std::endl;
+    return (out);
 }

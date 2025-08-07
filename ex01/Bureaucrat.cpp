@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:12 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/16 13:36:30 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/07 13:27:02 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,10 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
     return("Bureaucrat::GradeTooLowException");
+}
+
+std::ostream &operator<<(std::ostream &out, Bureaucrat &bur)
+{
+    out << bur.getName() << ", bureaucrat grade " << bur.getGrade() << std::endl;
+    return (out);
 }

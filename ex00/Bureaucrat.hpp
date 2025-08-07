@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/15 16:15:24 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/07 13:17:53 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,4 @@ class Bureaucrat
                 const char* what() const throw();
         };
 };
+std::ostream &operator<<(std::ostream &out, Bureaucrat &obj);
