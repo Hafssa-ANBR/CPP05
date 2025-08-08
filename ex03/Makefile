@@ -3,10 +3,11 @@ CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 rm = rm -rf
 HEADERS = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp \
-			ShrubberyCreationForm.hpp
+			ShrubberyCreationForm.hpp Intern.hpp
 
 SRCS = Bureaucrat.cpp  AForm.cpp  PresidentialPardonForm.cpp RobotomyRequestForm.cpp \
-		ShrubberyCreationForm.cpp main.cpp
+		ShrubberyCreationForm.cpp Intern.cpp main.cpp 
+
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
