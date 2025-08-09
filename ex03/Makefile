@@ -1,6 +1,6 @@
 NAME = Bureaucrat
 CPP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS =  	
 rm = rm -rf
 HEADERS = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp \
 			ShrubberyCreationForm.hpp Intern.hpp
@@ -25,4 +25,4 @@ fclean: clean
 	$(rm) $(NAME)
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 
