@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:12 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/16 18:13:47 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 19:08:56 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,15 @@ void Bureaucrat::decrement()
 
 void Bureaucrat::signForm(Form &existForm)
 {
-    if(existForm.getsigned())
+    try
+    {
+        existForm.beSigned(*this);
         std::cout << _name << " signed " << existForm.getFname() << std::endl;
+    }
+    catch(std::exception &e)
+    {
+        std::cout << _name << " couldn’t sign " << existForm.getFname() << " because " << e.what() << std::endl;
+    }
 }
 Bureaucrat::~Bureaucrat() {}
 

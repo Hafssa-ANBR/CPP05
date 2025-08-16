@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/16 18:13:55 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 19:00:32 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ class Bureaucrat
         Bureaucrat(std::string name,int ngrade);
         Bureaucrat(const Bureaucrat &cpy);
         Bureaucrat &operator=(const Bureaucrat &affect);
+        ~Bureaucrat();
         std::string getName() const;
         int getGrade() const;
         void increment();
         void decrement();
         void signForm(Form &existForm);
-        ~Bureaucrat();
         class GradeTooHighException : public std::exception
         {
             public:

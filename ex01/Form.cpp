@@ -6,46 +6,34 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:48:34 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/07 12:37:26 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 19:03:18 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form()
-{
-    _Fname = "default";
-    SigneGrade = 42;
-    exec_grade = 37;
-}
+Form::Form() : _Fname("default"), SigneGrade(42), _signed(false), exec_grade(37)  {}
 
-Form::Form(std::string name, int grade, int exec_gd)
+Form::Form(std::string name, int grade, int exec_gd) : _Fname(name), SigneGrade(grade), exec_grade(exec_gd)
 {
     if(grade < 1)
         throw Form::GradeTooHighException();
     if(grade > 150)
         throw Form::GradeTooLowException();
-    _Fname = name;
-    SigneGrade = grade;
-    exec_grade = exec_gd;
+    _signed = false;
 }
 
-Form::Form(const Form &cpy)
+Form::Form(const Form &cpy) : _Fname(cpy._Fname), SigneGrade(cpy.SigneGrade), exec_grade(cpy.exec_grade)
 {
-   *this = cpy;
+   _signed = cpy._signed;
 }
 
 Form &Form::operator=(const Form &affect)
 {
     if(this != &affect)
-    {
-        _Fname = affect._Fname;
-        SigneGrade = affect.SigneGrade;
         _signed = affect._signed;
-        exec_grade = affect.exec_grade;
-    }
-    return(*this);
+    return (*this);
 }
 
 std::string Form::getFname() const
@@ -70,9 +58,9 @@ int Form::getExecGrade() const
 
 Form::~Form() {}
 
-void Form::beSigned(const Bureaucrat &person)//why
+void Form::beSigned(const Bureaucrat &person)
 {
-    if (person.getGrade() > SigneGrade) // Si le grade est trop bas
+    if (person.getGrade() > SigneGrade)
         throw GradeTooLowException();
     _signed = true;
 }
