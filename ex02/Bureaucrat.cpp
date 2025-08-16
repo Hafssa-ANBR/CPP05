@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:12 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/16 18:15:54 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 19:24:43 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,15 @@ void Bureaucrat::decrement()
 
 void Bureaucrat::signForm(AForm &existForm)
 {
-    if(existForm.getsigned())
+    try
+    {
+        existForm.beSigned(*this);
         std::cout << _name << " signed " << existForm.getFname() << std::endl;
+    }
+    catch(std::exception &e)
+    {
+        std::cout << _name << " couldn’t sign " << existForm.getFname() << " because " << e.what() << std::endl;
+    }
 }
 Bureaucrat::~Bureaucrat() {}
 
@@ -81,13 +88,16 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat &bur)
     return (out);
 }
 
-void Bureaucrat::executeForm(AForm &existForm)
+void Bureaucrat::executeForm(AForm const &form) const
 {
-    try {
-        existForm.execute(*this);
-        std::cout << this->getName() << " executed " << existForm.getFname() << std::endl;
-    } catch (const std::exception &e) {
-        std::cout << this->getName() << " couldn't execute " << existForm.getFname()
+    try
+    {
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getFname() << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << _name << " couldn't execute " << form.getFname()
                   << " because: " << e.what() << std::endl;
     }
 }

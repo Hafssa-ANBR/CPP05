@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:04 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/07 13:37:52 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 20:05:17 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-int main() {
-    try {
-        Bureaucrat bob("Bob", 1); // Highest grade possible
-        Bureaucrat jim("Jim", 140); // Too low for some forms
+int main()
+{
+    try
+    {
+        Bureaucrat bob("Bob", 1);
+        Bureaucrat jim("Jim", 140);
 
         ShrubberyCreationForm shrub("garden");
         RobotomyRequestForm robo("Bender");
@@ -37,18 +39,20 @@ int main() {
         bob.signForm(pardon);
 
         std::cout << "\n-- Jim trying to execute forms (should fail for some) --\n";
-        jim.executeForm(shrub); // should succeed (exec grade = 137)
-        jim.executeForm(robo);  // should fail (exec grade = 45)
-        jim.executeForm(pardon);// should fail (exec grade = 5)
+        jim.executeForm(shrub);
+        jim.executeForm(robo);
+        jim.executeForm(pardon);
 
         std::cout << "\n-- Bob executing all forms --\n";
         bob.executeForm(shrub);
         bob.executeForm(robo);
         bob.executeForm(pardon);
 
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    return 0;
+    return (0);
 }
