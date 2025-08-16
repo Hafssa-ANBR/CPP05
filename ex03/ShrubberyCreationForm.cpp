@@ -6,47 +6,35 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 13:07:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/07 11:53:02 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 20:05:11 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : _target("default")
-{
-    this->SigneGrade = 145;
-    this->exec_grade = 137;
-}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
 {
     this->_target = target;
-    this->SigneGrade = 145;
-    this->exec_grade = 137;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy)
-{
-    *this = cpy;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy) : AForm(cpy) {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &affect)
 {
     if (this != &affect)
     {
         _target = affect._target;
-        _Fname = affect._Fname;
-        SigneGrade = affect.SigneGrade;
         _signed = affect._signed;
-        exec_grade = affect.exec_grade;
     }
     return(*this);
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    std::fstream MyFile("shrubberyTree.txt");
+    std::fstream MyFile(_target + "_shrubbery", std::ios::out | std::ios::trunc);
 
     if(executor.getGrade() > this->getExecGrade())
         throw GradeTooLowException();
@@ -70,7 +58,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
         "                           .::(@:.\n";
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}

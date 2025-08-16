@@ -13,39 +13,27 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm()
-{
-    _Fname = "default";
-    SigneGrade = 42;
-    exec_grade = 37;
-}
+AForm::AForm() : _Fname("default"), SigneGrade(42), _signed(false), exec_grade(37)  {}
 
-AForm::AForm(std::string name, int grade, int exec_gd)
+AForm::AForm(std::string name, int grade, int exec_gd) : _Fname(name), SigneGrade(grade), exec_grade(exec_gd)
 {
     if(grade < 1)
         throw AForm::GradeTooHighException();
     if(grade > 150)
         throw AForm::GradeTooLowException();
-    _Fname = name;
-    SigneGrade = grade;
-    exec_grade = exec_gd;
+    _signed = false;
 }
 
-AForm::AForm(const AForm &cpy)
+AForm::AForm(const AForm &cpy) : _Fname(cpy._Fname), SigneGrade(cpy.SigneGrade), exec_grade(cpy.exec_grade)
 {
-   *this = cpy;
+   _signed = cpy._signed;
 }
 
 AForm &AForm::operator=(const AForm &affect)
 {
     if(this != &affect)
-    {
-        _Fname = affect._Fname;
-        SigneGrade = affect.SigneGrade;
         _signed = affect._signed;
-        exec_grade = affect.exec_grade;
-    }
-    return(*this);
+    return (*this);
 }
 
 std::string AForm::getFname() const
@@ -69,12 +57,6 @@ int AForm::getExecGrade() const
 }
 
 AForm::~AForm() {}
-
-// void AForm::beSigned(Bureaucrat person)
-// {
-//     if(person.getGrade() >= _signed)
-//         _signed = true;
-// }
 
 void AForm::beSigned(const Bureaucrat &person)//why
 {

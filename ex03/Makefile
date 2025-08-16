@@ -1,4 +1,4 @@
-NAME = Bureaucrat
+NAME = intern
 CPP = c++
 CPPFLAGS =  	
 rm = rm -rf
