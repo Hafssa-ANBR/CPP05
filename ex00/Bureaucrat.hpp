@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/07 13:17:53 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:34:06 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Bureaucrat
         Bureaucrat(std::string name,int ngrade);
         Bureaucrat(const Bureaucrat &cpy);
         Bureaucrat &operator=(const Bureaucrat &affect);
-        std::string getName();
-        int getGrade();
+        std::string getName() const;
+        int getGrade() const;
         void increment();
         void decrement();
         ~Bureaucrat();
@@ -39,4 +39,4 @@ class Bureaucrat
                 const char* what() const throw();
         };
 };
-std::ostream &operator<<(std::ostream &out, Bureaucrat &obj);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj);

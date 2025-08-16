@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:04 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/07 13:28:21 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:55:46 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ int main()
         std::cout << b2 << std::endl;
         b1.increment();
         // b1.increment();
+        std::cout << b1 << std::endl;
 
         b2.decrement();
+        std::cout << b2 << std::endl;
         b2.decrement();
+        std::cout << b2 << std::endl;
     }
     
     catch(const std::exception &e)
