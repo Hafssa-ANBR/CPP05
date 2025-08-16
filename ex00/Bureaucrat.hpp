@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/16 17:34:06 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:09:46 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Bureaucrat
 {
     private:
-        std::string _name;
+        const std::string _name;
         int grade;
     public:
         Bureaucrat();
@@ -39,4 +39,4 @@ class Bureaucrat
                 const char* what() const throw();
         };
 };
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bur);

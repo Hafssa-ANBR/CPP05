@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:48:38 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/07/26 12:54:20 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:09:21 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ class Bureaucrat;
 class Form 
 {
     private:
-        std::string _Fname;
-        int SigneGrade;//signe grade
+        const std::string _Fname;
+        const int SigneGrade;
         bool _signed;
-        int exec_grade;
+        const int exec_grade;
         
     public:
         Form();

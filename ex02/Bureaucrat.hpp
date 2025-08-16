@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:20 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/07 13:45:21 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:14:16 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 class Bureaucrat
 {
     private:
-        std::string _name;
+        const std::string _name;
         int grade;
     public:
         Bureaucrat();

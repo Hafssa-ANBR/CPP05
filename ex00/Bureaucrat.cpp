@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:12 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/16 17:52:35 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:12:54 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@ Bureaucrat::Bureaucrat(std::string name,int ngrade) : _name(name)
         grade = ngrade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &cpy)
+Bureaucrat::Bureaucrat(const Bureaucrat &cpy) : _name(cpy._name)
 {
-    *this = cpy;
+    grade = cpy.grade;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &affect)
 {
     if(this != &affect)
-    {
-        _name = affect._name;
         grade = affect.grade;
-    }
     return(*this);
 }
 

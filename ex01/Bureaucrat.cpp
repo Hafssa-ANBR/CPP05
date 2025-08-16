@@ -6,7 +6,7 @@
 /*   By: hanebaro <hanebaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 13:06:12 by hanebaro          #+#    #+#             */
-/*   Updated: 2025/08/07 13:27:02 by hanebaro         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:13:47 by hanebaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@ Bureaucrat::Bureaucrat(std::string name,int ngrade) : _name(name)
         grade = ngrade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &cpy)
+Bureaucrat::Bureaucrat(const Bureaucrat &cpy) : _name(cpy._name)
 {
-    *this = cpy;
+    grade = cpy.grade;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &affect)
 {
     if(this != &affect)
-    {
-        _name = affect._name;
         grade = affect.grade;
-    }
     return(*this);
 }
 
@@ -61,7 +58,7 @@ void Bureaucrat::decrement()
         throw Bureaucrat::GradeTooLowException();
 }
 
-void Bureaucrat::signForm(Form existForm)
+void Bureaucrat::signForm(Form &existForm)
 {
     if(existForm.getsigned())
         std::cout << _name << " signed " << existForm.getFname() << std::endl;
@@ -78,7 +75,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return("Bureaucrat::GradeTooLowException");
 }
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat &bur)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bur)
 {
     out << bur.getName() << ", bureaucrat grade " << bur.getGrade() << std::endl;
     return (out);
